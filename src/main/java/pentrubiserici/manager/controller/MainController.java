@@ -5,13 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import pentrubiserici.manager.model.Member;
 import pentrubiserici.manager.service.MemberService;
-
-import java.util.stream.Collectors;
 
 @Controller
 class HomeController {
@@ -19,12 +15,6 @@ class HomeController {
 
     @Autowired
     MemberService memberService;
-
-    @RequestMapping("/international")
-    public String getHome() {
-        return "home";
-    }
-
 
     @RequestMapping("/login1")
     public String getlogin() {
@@ -36,7 +26,7 @@ class HomeController {
 
        memberService.saveMember(newMenberr);
 
-       return new RedirectView("showMembers");
+       return new RedirectView("/members/showMembers");
     }
 
 
@@ -48,17 +38,16 @@ class HomeController {
         memberService.saveMember(m);
 
 
-        return "addMembers";
+        return "/members/addMembers";
     }
-    @RequestMapping("/showMembers")
+
+
+    @RequestMapping("/members/showMembers")
     public String showMember(Model model) {
-
-
-
         model.addAttribute("membri",  memberService.getAll());
-
-        return "showMembers";
+        return "/members/showMembers";
     }
+
 
     @RequestMapping("/deleteMember")
     public RedirectView saveMemberdeleteMember(Member member) {
