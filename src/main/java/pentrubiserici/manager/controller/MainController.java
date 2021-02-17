@@ -4,6 +4,7 @@ package pentrubiserici.manager.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.view.RedirectView;
 import pentrubiserici.manager.model.Member;
@@ -29,6 +30,11 @@ class HomeController {
        return new RedirectView("/members/showMembers");
     }
 
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
+
 
     @RequestMapping("/addMembers")
     public String addMember(Model model) {
@@ -42,7 +48,7 @@ class HomeController {
     }
 
 
-    @RequestMapping("/members/showMembers")
+    @RequestMapping("/showMembers")
     public String showMember(Model model) {
         model.addAttribute("membri",  memberService.getAll());
         return "/members/showMembers";
