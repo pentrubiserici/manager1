@@ -19,22 +19,11 @@
 </head>
 <body>
 
-	<h1 th:text="#{greeting}"></h1>
-	<span th:text="#{lang.change}"></span>:
-	<select id="locales">
-		<option value=""></option>
-		<option value="en" th:text="#{lang.eng}"></option>
-		<option value="fr" th:text="#{lang.fr}"></option>
-	</select>
-	<h1>Bun Venit la Programul de Manageriere a Informațiilor despre Membrii</h1>
-<p>
-	<a th:href="@{/showMembers}"> Vizualizare Membri </a>
-</p>
+<header th:insert="/menu.html"> </header>
 
-	<p>
-		<a th:href="@{/addMembers}">Adauga Membri </a>
-	</p>
+<p>Go to the next page to see fragments in action</p>
 
+<footer th:replace="/foother.html"></footer>
 
 </body>
 
